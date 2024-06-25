@@ -1,0 +1,14 @@
+networks:
+  net-puppet: {}
+services:
+  master:
+    hostname: puppet
+    image: voxpupuli/container-puppetserver
+    networks:
+      - net-puppet
+  agent-ubuntu:
+    image: puppet-agent-ubuntu:jammy
+    networks:
+      - net-puppet
+    stdin_open: true
+    tty: true
